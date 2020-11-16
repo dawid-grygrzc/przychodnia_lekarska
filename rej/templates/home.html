@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for lekarz in lekarze %}
+<p>{{ lekarz.imie }} {{ lekarz.nazwisko }}</p>
+
+{% if user.is_authenticated %}
+<a href="{% url 'wizyta' lekarz.id %}">Wybierz</a>
+{% else %}
+<a href="{% url 'login' %}">Zaloguj się aby wybrać lekarza.</a>
+{% endif %}
+
+{% endfor %}
+
+{% endblock content %}

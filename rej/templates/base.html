@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="{% url 'js-catalog' %}"></script>
+    <script src="{% static '/admin/js/core.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+</head>
+<body>
+{% if user.is_authenticated %}
+<h3><a href="{% url 'profile' %}">Profile</a></h3>
+<h3><a href="{% url 'logout' %}">Logout</a></h3>
+{% else %}
+<h3><a href="{% url 'login' %}">Login</a></h3>
+<h3><a href="{% url 'register' %}">Register</a></h3>
+{% endif %}
+
+<br/>
+<br/>
+<br/>
+
+{% block content %}
+{% endblock content %}
+</body>
+</html>
