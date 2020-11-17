@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Wizyta</h1>
+
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.media }}
+
+    {{ form.patient.as_hidden }}
+    {{ form.doctor.as_hidden }}
+
+    <p>{{ form.add_inf }}</p>
+    <p>{{ form.add_inf.label }}</p>
+
+    <p>{{ form.visit_date }}</p>
+    <p>{{ form.visit_date.label }}</p>
+
+    <p>{{ form.visit_time }}</p>
+    <p>{{ form.visit_time.label }}</p>
+
+    <p>{{ form.type }}</p>
+    <p>{{ form.type.label }}</p>
+    <input type="submit" value="Umów wizytę">
+</form>
+{% endblock content %}

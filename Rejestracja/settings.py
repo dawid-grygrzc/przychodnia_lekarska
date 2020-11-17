@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rej'
+    'rej',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +67,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'rej.Account'
 
 WSGI_APPLICATION = 'Rejestracja.wsgi.application'
 
