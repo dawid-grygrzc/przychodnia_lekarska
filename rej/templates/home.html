@@ -3,14 +3,23 @@
 {% block content %}
 
 {% for doctor in doctors %}
-<p>{{ doctor.first_name }} {{ doctor.last_name }}</p>
+
+<h4>{{ doctor.first_name }} {{ doctor.last_name }}</h4>
+<h5>{{ doctor.get_specialization_display }}</h5>
+<h6>Gabinet nr: {{ doctor.office_nr }}</h6>
+</br>
+
 
 {% if user.is_authenticated %}
-<a href="{% url 'visit' doctor.id %}">Wybierz</a>
+<h6><a href="{% url 'visit' doctor.id %}">Wybierz</a></h6>
+
 {% else %}
 <a href="{% url 'login' %}">Zaloguj się aby wybrać lekarza.</a>
 {% endif %}
 
-{% endfor %}
 
+</br>
+</br>
+</br>
+{% endfor %}
 {% endblock content %}

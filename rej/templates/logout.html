@@ -1,5 +1,9 @@
-<h1>Wylogowales sie!</h1>
-<br/><br/><br/>
+{% extends 'base.html' %}
 
-<h3><a href="{% url 'home' %}">Wróć na stronę główną</a></h3>
-<h3><a href="{% url 'login' %}">Zaloguj się!</a></h3>
+{% block logout_content %}
+<h2>Wylogowales sie!</h2>
+<br/>
+
+<h4><a href="{% url 'home' %}">Wróć na stronę główną</a></h4>
+<h4><a href="{% url 'login' %}">Zaloguj się!</a></h4>
+{% endblock logout_content %}

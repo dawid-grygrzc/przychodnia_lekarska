@@ -1,0 +1,43 @@
+.container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .logo_and_menu {
+            width: 100%;
+            background-color: #d7d7d7;
+            color: red;
+        }
+            .logo {
+                width: 90%;
+                float: left;
+                background-color: #499afa;
+            }
+            .logowanie {
+                width: 10%;
+                float: right;
+                background-color: #00FFCC;
+                text-align: center;
+            }
+
+        .main {
+            width: auto;
+            height: 5000px;
+            background-color: #6633FF;
+        }
+            .nav {
+                width: 10%;
+                float: left;
+                background-color: #FF99FF;
+            }
+            .content {
+                width: 100%;
+                float: left;
+                text-align: center;
+            }
+        .footer {
+            width: 1000px;
+            clear: both;
+            text-align: center;
+            background-color: #99FF66;
+        }

@@ -6,11 +6,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, email, username, first_name, last_name, psl, phone, password=None):
+    def create_user(self, email, first_name, last_name, psl, phone, password=None):
         if not email:
             raise ValueError("Podaj email")
-        if not username:
-            raise ValueError("Podaj nazwę użytkownika")
         if not first_name:
             raise ValueError("Podaj imię")
         if not last_name:
@@ -34,10 +32,9 @@ class MyAccountManager(BaseUserManager):
         return user
 
 
-    def create_superuser(self, email, username, first_name, last_name, psl, phone, password):
+    def create_superuser(self, email, first_name, last_name, psl, phone, password):
         user = self.create_user(
             email=self.normalize_email(email),
-            username=username,
             first_name=first_name,
             last_name=last_name,
             psl=psl,
@@ -53,7 +50,6 @@ class MyAccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField(verbose_name="email", max_length=60, unique=True)
-    username = models.CharField(max_length=30, unique=True)
     date_joined = models.DateTimeField(verbose_name='date_joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last_login', auto_now=True)
     is_admin = models.BooleanField(default=False)
@@ -67,8 +63,7 @@ class Account(AbstractBaseUser):
     phone = PhoneNumberField(blank=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username',
-                       'first_name',
+    REQUIRED_FIELDS = ['first_name',
                        'last_name',
                        'psl',
                        'phone']
@@ -118,13 +113,18 @@ class Visit(models.Model):
         (1, 'Normalna wizyta'),
     }
 
-    visit_date = models.DateField(default=timezone.now, blank=False)
-    visit_time = models.TimeField(blank=False)
+    visit_date_time = models.DateTimeField(default=timezone.now, blank=False)
     patient = models.ForeignKey(Account, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     add_inf = models.TextField(max_length=300, blank=True, null=True)
-    type = models.SmallIntegerField(blank=True, choices=VIZITS)
+    type = models.SmallIntegerField(default=0, blank=False, choices=VIZITS)
 
     class Meta:
         verbose_name = 'Wizyta'
         verbose_name_plural = 'Wizyty'
+
+    def get_type_field(self):
+        if self.type == 0:
+            return 'Teleporada'
+        else:
+            return 'Normalna wizyta'

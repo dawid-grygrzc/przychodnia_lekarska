@@ -9,19 +9,41 @@
     <script src="{% static '/admin/js/core.js' %}"></script>
     <link rel="stylesheet" href="{% static 'admin/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" rel="stylesheet" />
+
+
+
+    <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- XDSoft DateTimePicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 </head>
 <body>
-{% if user.is_authenticated %}
-<h3><a href="{% url 'profile' %}">Profile</a></h3>
-<h3><a href="{% url 'logout' %}">Logout</a></h3>
+{% if request.path != '/login/' and request.path != '/register/' and request.path != '/logout/' %}
+    {% if user.is_authenticated %}
+        <h4><a href="{% url 'profile' %}">Profile</a></h4>
+        <h4><a href="{% url 'logout' %}">Logout</a></h4>
+        </br>
+        </br>
+    {% else %}
+        <h4><a href="{% url 'login' %}">Login</a></h4>
+        <h4><a href="{% url 'register' %}">Register</a></h4>
+        </br>
+        </br>
+    {% endif %}
 {% else %}
-<h3><a href="{% url 'login' %}">Login</a></h3>
-<h3><a href="{% url 'register' %}">Register</a></h3>
+    {% if request.path != '/logout/' %}
+        <h4><a href="{% url 'home' %}">Home page</a></h4>
+        </br>
+    {% else %}
+        {% block logout_content %}
+        {% endblock logout_content %}
+    {% endif %}
 {% endif %}
-
-<br/>
-<br/>
-<br/>
 
 {% block content %}
 {% endblock content %}

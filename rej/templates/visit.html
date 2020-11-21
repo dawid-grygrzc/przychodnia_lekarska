@@ -3,9 +3,6 @@
 {% block content %}
 
 <h1>Wizyta</h1>
-
-
-
 <form method="post">
     {% csrf_token %}
     {{ form.media }}
@@ -16,11 +13,17 @@
     <p>{{ form.add_inf }}</p>
     <p>{{ form.add_inf.label }}</p>
 
-    <p>{{ form.visit_date }}</p>
-    <p>{{ form.visit_date.label }}</p>
+    {{ form.visit_date_time }}
 
-    <p>{{ form.visit_time }}</p>
-    <p>{{ form.visit_time.label }}</p>
+    <script>
+    $(function () {
+    $("#id_visit_date_time").datetimepicker({
+      format: 'Y-m-d H:i',
+      inline: true,
+      step: 30
+        });
+     });
+    </script>
 
     <p>{{ form.type }}</p>
     <p>{{ form.type.label }}</p>
