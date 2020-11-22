@@ -13,14 +13,38 @@
     <p>{{ form.add_inf }}</p>
     <p>{{ form.add_inf.label }}</p>
 
-    {{ form.visit_date_time }}
+    <p>{{ form.visit_date_time }}</p>
+    <p>{{ form.visit_date_time.label }}</p>
 
     <script>
     $(function () {
+
+    jQuery.datetimepicker.setLocale('de');
+
     $("#id_visit_date_time").datetimepicker({
       format: 'Y-m-d H:i',
       inline: true,
-      step: 30
+      step: 30,
+      yearStart: 2020,
+      yearEnd: 2021,
+      disabledWeekDays: [5, 6],
+      i18n:{
+          de:{
+           months:['Styczen', 'Luty', 'Marzec',
+                    'Kwiecien', 'Maj', 'Czerwiec',
+                    'Lipiec', 'Sierpień', 'Wrzesien',
+                    'Pazdziernik', 'Listopad', 'Grudzien',],
+           dayNamesShort:['Nd.', 'Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'Sb.',]
+          }
+         },
+
+      allowTimes:['08:00', '08:30', '09:00',
+                  '09:30', '10:00', '10:30',
+                  '11:00', '11:30', '12:00',
+                  '12:30', '13:00', '13:30',
+                  '14:00', '14:30', '15:00',
+                  '15:30', '16:00', '16:30',
+                  '17:00', '17:30']
         });
      });
     </script>
@@ -30,3 +54,13 @@
     <input type="submit" value="Umów wizytę">
 </form>
 {% endblock content %}
+
+<!-- i18n: {
+            month: ['Styczen', 'Luty', 'Marzec',
+                    'Kwiecien', 'Maj', 'Czerwiec',
+                    'Lipiec', 'Sierpień', 'Wrzesien',
+                    'Pazdziernik', 'Listopad', 'Grudzien'],
+
+            dayOfWeek: ['Poniedziałek', 'Wtorek', 'Środa',
+                    'Czwartek', 'Piątek', 'Sobota',
+                    'Niedziela'] -->

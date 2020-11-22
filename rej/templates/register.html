@@ -1,16 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Register</h1>
-</br>
-</br>
+<h1>Zarejestruj się!</h1>
 </br>
 
 <form method="post">
     {% csrf_token %}
 
-    {{ form.as_p }}
-    <input type="submit" value="Register">
+    <p>{{ form.email }}</p>
+    <p>{{ form.email.label }}</p>
+
+    <p>{{ form.password1 }}</p>
+    <p>{{ form.password1.label }}</p>
+    <ul>
+        {% for password_help_text in form.password_help_texts%}
+        <li>{{ password_help_text }}</li>
+    {% endfor %}
+    </ul>
+
+    <p>{{ form.password2 }}</p>
+    <p>{{ form.password2.label }}</p>
+
+    <p>{{ form.first_name }}</p>
+    <p>{{ form.first_name.label }}</p>
+
+    <p>{{ form.last_name }}</p>
+    <p>{{ form.last_name.label }}</p>
+
+    <p>{{ form.psl }}</p>
+    <p>{{ form.psl.label }}</p>
+
+    <p>{{ form.phone }}</p>
+    <p>{{ form.phone.label }}</p>
+    </br>
+
+    <input type="submit" value="Zatwierdź">
 </form>
 
 <h2><a href="{% url 'login' %}">Masz już konto?</a></h2>

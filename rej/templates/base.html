@@ -13,8 +13,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" rel="stylesheet" />
 
-
-
     <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
@@ -25,19 +23,19 @@
 <body>
 {% if request.path != '/login/' and request.path != '/register/' and request.path != '/logout/' %}
     {% if user.is_authenticated %}
-        <h4><a href="{% url 'profile' %}">Profile</a></h4>
-        <h4><a href="{% url 'logout' %}">Logout</a></h4>
+        <h4><a href="{% url 'profile' %}">Profil</a></h4>
+        <h4><a href="{% url 'logout' %}">Wyloguj</a></h4>
         </br>
         </br>
     {% else %}
-        <h4><a href="{% url 'login' %}">Login</a></h4>
-        <h4><a href="{% url 'register' %}">Register</a></h4>
+        <h4><a href="{% url 'login' %}">Zaloguj</a></h4>
+        <h4><a href="{% url 'register' %}">Zarejestruj się</a></h4>
         </br>
         </br>
     {% endif %}
 {% else %}
     {% if request.path != '/logout/' %}
-        <h4><a href="{% url 'home' %}">Home page</a></h4>
+        <h4><a href="{% url 'home' %}">Wróc na stronę główną</a></h4>
         </br>
     {% else %}
         {% block logout_content %}

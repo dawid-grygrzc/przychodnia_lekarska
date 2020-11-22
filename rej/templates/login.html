@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Login</h1>
+<h1>Zaloguj się!</h1>
 
 </br>
 
 <form method="post">
 {% csrf_token %}
-{{ form.as_p }}
+
+    <p>{{ form.username }}</p>
+    <p>{{ form.username.label }}</p>
+
+    <p>{{ form.password }}</p>
+    <p>Hasło</p>
+
     <input type="submit" value="Zaloguj"/>
 </form>
 
