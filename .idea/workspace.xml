@@ -20,12 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="11e55295-15ca-4861-82dd-85922290186e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DjangoProjectTUTAJ.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rej/templates/kontakt.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rej/templates/o_nas.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0008_auto_20201128_1846.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0009_auto_20201128_1846.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0010_auto_20201128_1847.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0011_auto_20201128_1848.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0012_auto_20201128_1915.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0013_auto_20201128_1916.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0014_auto_20201128_1918.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0015_auto_20201128_1920.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0016_auto_20201128_1921.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0017_auto_20201128_1921.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0018_auto_20201128_1927.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0019_auto_20201128_1928.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0020_auto_20201128_1928.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0021_auto_20201128_1931.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0022_auto_20201128_2101.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0023_auto_20201128_2102.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0024_auto_20201128_2102.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/migrations/0025_auto_20201128_2104.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rej/templates/visits.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DjangoProjectTUTAJ.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DjangoProjectTUTAJ.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Rejestracja.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rejestracja/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rejestracja/settings.py" afterDir="false" />
@@ -35,8 +53,10 @@
       <change beforePath="$PROJECT_DIR$/rej/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rej/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rej/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rej/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rej/templates/kontakt.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/kontakt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rej/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rej/templates/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/logout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rej/templates/o_nas.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/o_nas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rej/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rej/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rej/templates/visit.html" beforeDir="false" afterPath="$PROJECT_DIR$/rej/templates/visit.html" afterDir="false" />
