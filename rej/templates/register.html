@@ -1,43 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Zarejestruj się!</h1>
+<h2>Zarejestruj się!</h2>
 </br>
-
 <form method="post">
     {% csrf_token %}
 
+    <h6><p>{{ form.email.label }}</p></h6>
     <p>{{ form.email }}</p>
-    <p>{{ form.email.label }}</p>
 
+    <h6><p>{{ form.password1.label }}</p></h6>
     <p>{{ form.password1 }}</p>
-    <p>{{ form.password1.label }}</p>
-    <ul>
-        {% for password_help_text in form.password_help_texts%}
-        <li>{{ password_help_text }}</li>
-    {% endfor %}
+    <ul style="display: inline-block; text-align: left;">
+        {% for password_help_text in form.password_help_texts %}
+            <li>{{ password_help_text }}</li>
+        {% endfor %}
     </ul>
 
+    <h6><p>{{ form.password2.label }}</p></h6>
     <p>{{ form.password2 }}</p>
-    <p>{{ form.password2.label }}</p>
 
+    <h6><p>{{ form.first_name.label }}</p></h6>
     <p>{{ form.first_name }}</p>
-    <p>{{ form.first_name.label }}</p>
 
+    <h6><p>{{ form.last_name.label }}</p></h6>
     <p>{{ form.last_name }}</p>
-    <p>{{ form.last_name.label }}</p>
 
+    <h6><p>{{ form.psl.label }}</p></h6>
     <p>{{ form.psl }}</p>
-    <p>{{ form.psl.label }}</p>
 
+   <h6> <p>{{ form.phone.label }}</p></h6>
     <p>{{ form.phone }}</p>
-    <p>{{ form.phone.label }}</p>
+
     </br>
 
     <input type="submit" value="Zatwierdź">
 </form>
 
-<h2><a href="{% url 'login' %}">Masz już konto?</a></h2>
+<h2><a href="{% url 'login' %}" class="link">Masz już konto?</a></h2>
 
 {% endblock content %}
 

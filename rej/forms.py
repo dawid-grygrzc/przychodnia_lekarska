@@ -45,9 +45,17 @@ class VisitForm(ModelForm):
     class Meta:
         model = Visit
         fields = ['patient', 'doctor', 'add_inf', 'visit_date_time', 'type']
+        widgets = {
+            'doctor': forms.Textarea(
+                attrs={
+                    "rows": 1
+                }
+            )
+        }
 
     def __init__(self, *args, **kwargs):
         super(ModelForm, self).__init__(*args, **kwargs)
+        self.fields['doctor'].label = 'Wybrany doktor'
         self.fields['add_inf'].label = 'Dodatkowe informacje'
         self.fields['type'].label = 'Typ wizyty'
         self.fields['visit_date_time'].label = 'Data i godzina wizyty'

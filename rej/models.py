@@ -3,6 +3,38 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.utils import timezone
 from django.contrib.auth.models import User, BaseUserManager, AbstractBaseUser
 from phonenumber_field.modelfields import PhoneNumberField
+from enum import Enum
+
+
+class ChoiceEnum(Enum):
+
+    @classmethod
+    def choices(cls):
+        choices = list()
+        # Loop thru defined enums
+        for item in cls:
+            choices.append((item.value, item.name))
+        # return as tuple
+        return tuple(choices)
+
+    def __str__(self):
+        return self.name
+
+    def __int__(self):
+        return self.value
+
+
+class VisitType(ChoiceEnum):
+    Teleporada = 0
+    Normalna_wizyta = 1
+
+
+class Specialization(ChoiceEnum):
+    Pediatra = 0
+    Alergolog = 1
+    Dermatolog = 2
+    Laryngolog = 3
+    Ginekolog = 4
 
 
 class MyAccountManager(BaseUserManager):
@@ -20,7 +52,6 @@ class MyAccountManager(BaseUserManager):
 
         user = self.model(
             email=self.normalize_email(email),
-            username=username,
             first_name=first_name,
             last_name=last_name,
             psl=psl,
@@ -82,18 +113,11 @@ class Account(AbstractBaseUser):
 
 class Doctor(models.Model):
     "Lekarz należący do przychodni"
-    SPECIALIZATIONS = {
-        (0, 'Pediatra'),
-        (1, 'Alergolog'),
-        (2, 'Dermatolog'),
-        (3, 'Laryngolog'),
-        (4, 'Ginekolog'),
-    }
 
     first_name = models.CharField(max_length=25, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
     office_nr = models.PositiveSmallIntegerField(blank=False, unique=True,validators=[MinValueValidator(1), MaxValueValidator(5)], default=1)
-    specialization = models.PositiveSmallIntegerField(default=0, choices=SPECIALIZATIONS)
+    specialization = models.PositiveSmallIntegerField(default=0, choices=Specialization.choices())
 
     class Meta:
         verbose_name = 'Lekarz'
@@ -105,26 +129,50 @@ class Doctor(models.Model):
     def doctor_data(self):
         return "{} {}".format(self.first_name, self.last_name)
 
+    def get_specialization(self):
+        if self.specialization == 1:
+            return 'Alergolog'
+        elif self.specialization == 2:
+            return 'Dermatolog'
+        elif self.specialization == 0:
+            return 'Pediatra'
+        elif self.specialization == 4:
+            return 'Ginekolog'
+        elif self.specialization == 3:
+            return 'Laryngolog'
+
 
 class Visit(models.Model):
     """Konkretna wizyta, łącząca ze sobą pacjenta i lekarza"""
-    VIZITS = {
-        (0, 'Teleporada'),
-        (1, 'Normalna wizyta'),
-    }
 
     visit_date_time = models.DateTimeField(default=timezone.now, blank=False)
     patient = models.ForeignKey(Account, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     add_inf = models.TextField(max_length=300, blank=True, null=True)
-    type = models.SmallIntegerField(default=0, blank=False, choices=VIZITS)
+    type = models.SmallIntegerField(default=0, blank=False, choices=VisitType.choices())
 
     class Meta:
         verbose_name = 'Wizyta'
         verbose_name_plural = 'Wizyty'
 
+
+    def visit_display(self):
+        return self.get_date() + "\n" + self.add_inf + "\n" + self.doctor.doctor_data() + "\n" + self.get_type_field()
+
+
+    def get_add_inf(self):
+        return self.add_inf
+
+    def get_doctor_data(self):
+        return self.doctor.doctor_data()
+
+    def get_date(self):
+        return str(self.visit_date_time)[0:-6]
+
     def get_type_field(self):
-        if self.type == 0:
+        if self.type == VisitType.Teleporada:
             return 'Teleporada'
         else:
             return 'Normalna wizyta'
+
+

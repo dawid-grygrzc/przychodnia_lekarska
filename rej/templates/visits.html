@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 style="color:white">Twoje wizyty</h1>
+
+
+{% for visit in visits %}
+
+<h4>{{ visit.get_doctor_data }}</h4>
+<h4>{{ visit.get_add_inf }}</h4>
+<h4>{{ visit.get_date }}</h4>
+<h4><p>{{ visit.get_type_field }}</p></h4>
+
+
+<form action='/delete_visit/{{ visit.id }}/' method='POST'>{% csrf_token %}
+    <p><input type='submit' value='Odwołaj' /></p>
+</form>
+</br>
+</br>
+{% endfor %}
+
+{% endblock content %}

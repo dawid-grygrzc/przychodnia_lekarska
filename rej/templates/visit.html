@@ -2,20 +2,28 @@
 
 {% block content %}
 
-<h1>Wizyta</h1>
+<h1 style="color:white">Wizyta</h1>
+<br>
+
 <form method="post">
     {% csrf_token %}
     {{ form.media }}
 
     {{ form.patient.as_hidden }}
     {{ form.doctor.as_hidden }}
+   <h4>Doktor: <strong>{{ doc }}</strong></h4>
+    <h4>Specjalizacja: <strong>{{ doc_spec }}</strong></h4>
+    <br>
 
+
+    <h4><p>{{ form.visit_date_time.label }}</p></h4>
+    <h4><p>{{ form.visit_date_time }}</p></h4>
+
+    <h4><p>{{ form.type.label }}</p></h4>
+    <p>{{ form.type }}</p>
+
+    <h4><p>{{ form.add_inf.label }}</p></h4>
     <p>{{ form.add_inf }}</p>
-    <p>{{ form.add_inf.label }}</p>
-
-    <p>{{ form.visit_date_time }}</p>
-    <p>{{ form.visit_date_time.label }}</p>
-
     <script>
     $(function () {
 
@@ -27,7 +35,7 @@
       step: 30,
       yearStart: 2020,
       yearEnd: 2021,
-      disabledWeekDays: [5, 6],
+      disabledWeekDays: [6,0],
       i18n:{
           de:{
            months:['Styczen', 'Luty', 'Marzec',
@@ -49,8 +57,8 @@
      });
     </script>
 
-    <p>{{ form.type }}</p>
-    <p>{{ form.type.label }}</p>
+
+
     <input type="submit" value="Umów wizytę">
 </form>
 {% endblock content %}

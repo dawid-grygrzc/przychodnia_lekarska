@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h4><a href="{% url 'home' %}">Wróc na stronę główną</a></h4>
+<h4><a href="{% url 'home' %}" class="link">Wróc na stronę główną</a></h4>
 </br>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <p>{{ form.email.label }}</p>
+        <p>{{ form.email }}</p>
+
+        <p>{{ form.first_name.label }}</p>
+        <p>{{ form.first_name }}</p>
+
+        <p>{{ form.last_name.label }}</p>
+        <p>{{ form.last_name }}</p>
+
+        <p>{{ form.psl.label }}</p>
+        <p>{{ form.psl }}</p>
+
+        <p>{{ form.phone.label }}</p>
+        <p>{{ form.phone }}</p>
+
         <input type="submit" value="Zatwierdź">
     </form>
+
 {% endblock content %}

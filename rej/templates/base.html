@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Centrum Zdrowia</title>
 
     <script src="{% url 'js-catalog' %}"></script>
     <script src="{% static '/admin/js/core.js' %}"></script>
@@ -13,37 +13,159 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" rel="stylesheet" />
 
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
     <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
   <!-- XDSoft DateTimePicker -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+    <style>
+        body
+        {
+            background-color: #303030;
+            color: #ffffff;
+        }
+        #container
+        {
+            width: 1725px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            #logo_and_login
+            {
+                height: 90px;
+                width: 1725x;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+                #logo
+                {
+                    color: #FFFFFF;
+                    min-height: 70px;
+                    width: 85%;
+                    float: left;
+                    font-family: 'Montserrat', sans-serif;
+                }
+                #logo a:hover
+                {
+                    background-color: #dddddd;
+                }
+                #login
+                {
+                    width: 15%;
+                    min-height: 70px;
+                    float: left;
+                    text-align: center;
+                }
+                #login a:hover
+                {
+                    background-color: #dddddd;
+                }
+             #main
+             {
+
+                width: 1725px;
+                clear:both;
+             }
+                #nav
+                {
+
+                    width: 5%;
+                    min-height: 650px;
+                    float: left;
+                }
+                #nav a:hover
+                {
+                    background-color: #dddddd;
+
+                }
+                #content
+                {
+                    width: 95%;
+                    min-height: 650px;
+                    float: left;
+                    text-align: center;
+                    padding: 0;
+                }
+                #content a:hover
+                {
+                    background-color: #dddddd;
+                }
+             #footer
+             {
+                clear: both;
+                text-align: center;
+             }
+             td
+             {  border: 1px
+                solid black;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+             }
+             a.link
+             {
+                color: #ffffff;
+                text-decoration: none;
+             }
+    </style>
 </head>
 <body>
-{% if request.path != '/login/' and request.path != '/register/' and request.path != '/logout/' %}
-    {% if user.is_authenticated %}
-        <h4><a href="{% url 'profile' %}">Profil</a></h4>
-        <h4><a href="{% url 'logout' %}">Wyloguj</a></h4>
-        </br>
-        </br>
-    {% else %}
-        <h4><a href="{% url 'login' %}">Zaloguj</a></h4>
-        <h4><a href="{% url 'register' %}">Zarejestruj się</a></h4>
-        </br>
-        </br>
-    {% endif %}
-{% else %}
-    {% if request.path != '/logout/' %}
-        <h4><a href="{% url 'home' %}">Wróc na stronę główną</a></h4>
-        </br>
-    {% else %}
-        {% block logout_content %}
-        {% endblock logout_content %}
-    {% endif %}
-{% endif %}
+    <div id="container">
+        <div id="logo_and_login">
+            <div id="logo">
+                <h1 style="color:white"><a href="{% url 'home' %}" class="link">Centrum Zdrowia we Wrocławiu</a></h1>
+            </div>
+            <div id="login">
+                    {% if request.path != '/login/' and request.path != '/register/' and request.path != '/logout/' %}
+                    {% if user.is_authenticated %}
+                        <h4><a href="{% url 'profile' %}" class="link">Profil</a></h4>
+                        <h4><a href="{% url 'visits' %}" class="link">Wizyty</a></h4>
+                        <h4><a href="{% url 'logout' %}" class="link">Wyloguj</a></h4>
+                        </br>
+                        </br>
+                    {% else %}
+                        <h4><a href="{% url 'login' %}" class="link">Zaloguj</a></h4>
+                        <h4><a href="{% url 'register' %}" class="link">Zarejestruj się</a></h4>
+                        </br>
+                        </br>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        <div id="main">
+            <div id="nav">
+                <br>
+                <h5><a href="{% url 'home' %}" class="link">Strona główna</a></h5>
+                <br>
+                <h5><a href="{% url 'o_nas' %}" class="link">O nas</a></h5>
+                <br>
+                <h5><a href="{% url 'kontakt' %}" class="link">Kontakt</a></h5>
+            </div>
+            <div id="content">
+                {% if request.path != '/logout/' %}
 
-{% block content %}
-{% endblock content %}
+                    {% else %}
+                        {% block logout_content %}
+                        {% endblock logout_content %}
+                    {% endif %}
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+        <div id="footer">
+            <br>
+            <br>
+            Centrum Zdrowia we Wrocławiu &copy; Wszelkie prawa zastrzeżone
+        </div>
+
+
+
+        </div>
 </body>
 </html>
